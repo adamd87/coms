@@ -21,6 +21,7 @@ class UserViewResponse {
     private String surname;
     private LocalDate dateOfBirth;
     private LocalDate dateOfEmployment;
+    private Boolean active;
     private Position position;
     private Role role;
     private FormOfEmployment formOfEmployment;

@@ -9,6 +9,5 @@ import pl.adamd.coms.account.entity.User;
 public
 interface UserMapper {
 
-
     UserViewResponse userEntityToUserDto(User user);
 }

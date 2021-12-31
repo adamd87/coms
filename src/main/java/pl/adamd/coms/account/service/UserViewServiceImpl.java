@@ -9,8 +9,6 @@ import pl.adamd.coms.account.enums.Position;
 import pl.adamd.coms.account.enums.Role;
 import pl.adamd.coms.account.mapper.UserMapper;
 
-import java.time.LocalDate;
-
 @Service
 @AllArgsConstructor
 class UserViewServiceImpl implements UserViewService {
@@ -24,10 +22,11 @@ class UserViewServiceImpl implements UserViewService {
                 .name(newEmployee.getName().trim())
                 .surname(newEmployee.getSurname().trim())
                 .dateOfBirth(newEmployee.getDateOfBirth())
-                .dateOfEmployment(LocalDate.now())
+                .dateOfEmployment(newEmployee.getDateOfEmployment())
                 .position(newEmployee.getPosition())
                 .formOfEmployment(newEmployee.getFormOfEmployment())
                 .salary(newEmployee.getSalary())
+                .active(true)
                 .build();
 
         if (newEmployee.getPosition() == Position.MANAGER) {
