@@ -9,6 +9,8 @@ import pl.adamd.coms.account.enums.Position;
 import pl.adamd.coms.account.enums.Role;
 import pl.adamd.coms.account.mapper.UserMapper;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 class UserViewServiceImpl implements UserViewService {
@@ -38,5 +40,12 @@ class UserViewServiceImpl implements UserViewService {
         userService.save(newUser);
 
         return userMapper.userEntityToUserDto(newUser);
+    }
+
+    @Override
+    public List<UserViewResponse> getAll() {
+       List<User> userList = userService.findAll();
+
+       return userMapper.userEntityListToUserDtoList(userList);
     }
 }

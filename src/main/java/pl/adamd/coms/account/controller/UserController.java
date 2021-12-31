@@ -2,13 +2,12 @@ package pl.adamd.coms.account.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.adamd.coms.account.dto.UserCreateRequest;
 import pl.adamd.coms.account.dto.UserViewResponse;
 import pl.adamd.coms.account.service.UserViewService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -20,4 +19,10 @@ class UserController {
     ResponseEntity<UserViewResponse> addNewEmployee(@RequestBody UserCreateRequest newEmployee){
         return ResponseEntity.ok(userViewService.createNewEmployee(newEmployee));
     }
+
+    @GetMapping
+    ResponseEntity<List<UserViewResponse>> getAllEmployees(){
+        return ResponseEntity.ok(userViewService.getAll());
+    }
+
 }
