@@ -1,6 +1,7 @@
 package pl.adamd.coms.account.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.adamd.coms.account.enums.FormOfEmployment;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
+@Builder
 public class User {
 
     @Id
@@ -27,7 +29,6 @@ public class User {
     private LocalDate dateOfEmployment;
     private Position position;
     private Role role;
-    private Integer seniority;
     private FormOfEmployment formOfEmployment;
     private BigDecimal salary;
 }
