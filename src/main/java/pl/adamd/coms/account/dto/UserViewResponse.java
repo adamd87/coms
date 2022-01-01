@@ -13,8 +13,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public
-class UserViewResponse {
+public class UserViewResponse {
 
     private Long id;
     private String name;

@@ -14,6 +14,7 @@ import pl.adamd.coms.helpers.NewUserGenerator;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @SqlTruncateTables
@@ -67,6 +68,21 @@ class UserControllerTest {
                 .statusCode(200);
 
         assertThat(repository.findById(1L).get().getRole()).isEqualTo(Role.USER);
+    }
+
+    @Test
+    @DisplayName("Should set active boolean true for new employee")
+    void addNewWorker_createNewEmployee_SetActiveTrue(){
+        final String newWorker = NewUserGenerator.newEmployeeWithCorrectDataAndPositionWorker();
+        given().body(newWorker)
+                .when()
+                .contentType(String.valueOf(MediaType.APPLICATION_JSON))
+                .post("http://localhost:" + port + "/api/users")
+                .then()
+                .assertThat()
+                .statusCode(200);
+
+        assertTrue(repository.findById(1L).get().getActive());
     }
 
 }

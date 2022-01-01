@@ -39,13 +39,11 @@ class UserViewServiceImpl implements UserViewService {
 
         userService.save(newUser);
 
-        return userMapper.userEntityToUserDto(newUser);
+        return userMapper.userEntityToDto(newUser);
     }
 
     @Override
     public List<UserViewResponse> getAll() {
-       List<User> userList = userService.findAll();
-
-       return userMapper.userEntityListToUserDtoList(userList);
+        return userMapper.userEntityListToDto(userService.findAll());
     }
 }

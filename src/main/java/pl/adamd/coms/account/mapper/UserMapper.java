@@ -8,10 +8,9 @@ import pl.adamd.coms.account.entity.User;
 import java.util.List;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
-public
-interface UserMapper {
+public interface UserMapper {
 
-    UserViewResponse userEntityToUserDto(User user);
+    UserViewResponse userEntityToDto(User user);
 
-    List<UserViewResponse> userEntityListToUserDtoList(List<User> userList);
+    List<UserViewResponse> userEntityListToDto(List<User> userList);
 }
